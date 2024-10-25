@@ -1,0 +1,17 @@
+#header {
+  height: 100svh;
+  background-color: var(--ARF-color001);
+  color: var(--ARF-color003);
+  display: flex;
+}
+#header > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+h2 {
+  font-size: 40px;
+  margin-bottom: 40px;
+}

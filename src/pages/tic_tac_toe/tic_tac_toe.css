@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Nabla&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nabla&family=Press+Start+2P&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+:root {
+  font-family: 'Press Start 2P', system-ui;
+  font-weight: 400;
+  font-style: normal;
+  --ARF-color001: #363636;
+  --ARF-color002: #ffff00;
+  --ARF-color003: white;
+  box-sizing: border-box;
+}
+
+#appTictactoe {
+  height: 100svh;
+  background-color: var(--ARF-color001);
+}
+.divNavGame {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0px;
+  position: relative;
+}
+.divLogo {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: left;
+  position: absolute;
+  left: 0px;
+}
+.divLogo > div > :first-child {
+  font-family: 'Nabla', system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: 'EDPT' 100, 'EHLT' 12;
+  font-size: 60px;
+}
+
+.divLogo > :last-child {
+  font-size: 10px;
+  color: var(--ARF-color003);
+}
+.divNavGame > :last-child {
+  width: calc(100% - 250px);
+  height: 100%;
+  position: absolute;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--ARF-color003);
+}
+.divNavGame > :last-child > p {
+  font-size: 35px;
+  text-align: center;
+}
+
+.tic_tac_toe {
+  display: flex;
+  height: calc(100% - 140px);
+  margin: auto;
+}
+.divControls {
+  width: 250px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.divControls > div {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.divControls > div > p:first-child {
+  color: var(--ARF-color003);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 100%;
+  height: 100px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 100px;
+}
+.divControls > div > p:last-child {
+  width: 100%;
+  text-align: center;
+  color: var(--ARF-color003);
+}
+button {
+  width: auto;
+  height: 60px;
+  background-color: var(--ARF-color002);
+  color: var(--ARF-color001);
+  font-family: 'Press Start 2P', system-ui;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 40px;
+  cursor: pointer;
+}
+
+#playGame {
+  display: flex;
+  width: calc(100% - 250px);
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.tablero {
+  display: grid;
+  width: 450px;
+  height: 450px;
+  grid-template-columns: repeat(3, 150px);
+  grid-template-rows: repeat(3, 150px);
+  border: 2px solid black;
+}
+
+.cell {
+  border: 2px solid black;
+  background-color: var(--ARF-color001);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 120px;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
