@@ -15,7 +15,7 @@ export default function Header(parentNode) {
     divButtons
   )
   createNav('Memory', './src/pages/memory/memory.html', divButtons)
-  createNav('Trivial', './src/pages/trivial/trivial.js', divButtons)
+  createNav('Trivial', './src/pages/trivial/trivial.html', divButtons)
   divHeader.append(h1, h2, divButtons)
   header.append(divHeader)
   parentNode.append(header)

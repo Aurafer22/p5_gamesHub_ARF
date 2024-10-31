@@ -164,3 +164,22 @@ button {
   object-fit: cover;
   transform: rotateY(180deg);
 }
+
+.divWinner {
+  position: absolute;
+  width: 600px;
+  height: auto;
+  background-color: var(--ARF-color002);
+  border-radius: 10px;
+  z-index: 9999;
+  top: 300px;
+  left: 500px;
+  box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.35);
+}
+.divWinner > h3 {
+  color: var(--ARF-color001);
+  font-size: 40px;
+  padding: 60px 40px;
+  line-height: 50px;
+  text-align: center;
+}

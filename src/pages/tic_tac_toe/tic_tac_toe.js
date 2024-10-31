@@ -88,6 +88,9 @@ function checkWinner(a, b, c) {
     cells[b].style.color = '#363636'
     cells[c].style.color = '#363636'
     getWinner(cells[a].innerHTML)
+    Array.from(cells).forEach((cell) => {
+      cell.style.pointerEvents = 'none'
+    })
   }
 }
 function getWinner(turn) {
