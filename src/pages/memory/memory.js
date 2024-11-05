@@ -46,6 +46,7 @@ function initGame() {
 }
 initGame()
 startButton.addEventListener('click', () => {
+  localStorage.clear()
   divCards.innerHTML = ''
   location.reload()
   initGame()
@@ -55,6 +56,7 @@ let firstCard = null
 let secondCard = null
 let counterClick = 0
 let counterPoints = 0
+let cardsFlipped
 const allCards = document.querySelectorAll('.card')
 function blockCards() {
   Array.from(allCards).forEach((card) => {
@@ -93,6 +95,14 @@ Array.from(allCards).forEach((card) =>
         }
         resetCards()
         openCards()
+        localStorage.setItem('points', counterPoints)
+        cardsFlipped = Array.from(document.querySelectorAll('.flipped')).map(
+          (card) => card.getAttribute('data-id')
+        )
+        localStorage.setItem('cards', JSON.stringify(cardsFlipped))
+        console.log(cardsFlipped)
+
+        localStorage.setItem('cards', JSON.stringify(cardsFlipped))
       }, 1000)
     }
     if (
@@ -110,55 +120,22 @@ function checkWinner() {
   h3Winner.textContent = "You're a CRACK!!"
   divWinner.append(h3Winner)
   gameMemory.append(divWinner)
+  localStorage.removeItem('points')
+  localStorage.removeItem('cards')
 }
 
-// const cardClicked = document.querySelectorAll('.flipped')
-// Array.from(cardClicked)
-// for (let i = 0; i < cardClicked.length; i++) {
-//   const card = cardClicked[i]
-//   if (card[0] === card[1]) {
-//   } else {
-//     card[0].classList.remove('flipped')
-//     card[1].classList.remove('flipped')
-//     openCards()
-//   }
-// }
-
-// document.querySelectorAll('.card').forEach((divCard) =>
-//   divCard.addEventListener('click', () => {
-//     let firstCard = null
-//     let secondCard = null
-//     let stopTurn = false
-//     if (stopTurn || divCard.classList.contains('flipped')) return
-//     // divCard.classList.add('flipped')
-//     if (firstCard === null) {
-//       firstCard = divCard
-//       firstCard.classList.add('flipped')
-//     } else if (secondCard === null) {
-//       secondCard = divCard
-//       secondCard.classList.add('flipped')
-//       stopTurn = true
-//     }
-//     console.log(firstCard)
-//     console.log(secondCard)
-
-//     setTimeout(() => {
-//       if (firstCard === secondCard) {
-//         // Si coinciden, se mantienen giradas
-//         stopTurn = false
-//         resetCards()
-//       } else {
-//         // Si no coinciden, se vuelven a voltear después de 5 segundos
-//         firstCard.classList.remove('flipped')
-//         secondCard.classList.remove('flipped')
-//         resetCards()
-//         stopTurn = false
-//       }
-//     }, 2000)
-//   })
-// )
 function resetCards() {
   firstCard = null
   secondCard = null
   counterClick = 0
 }
+window.addEventListener('DOMContentLoaded', () => {
+  counterPoints = localStorage.getItem('points') || 0
+  counter.textContent = counterPoints
+  let savedCardsFlipped = JSON.parse(localStorage.getItem('cards')) || []
+  Array.from(allCards).forEach((card) => {
+    if (savedCardsFlipped.includes(card.getAttribute('data-id'))) {
+      card.classList.add('flipped')
+    }
+  })
+})

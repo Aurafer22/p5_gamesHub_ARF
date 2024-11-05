@@ -154,21 +154,28 @@ button {
 .divTrivial {
   width: 100%;
   height: 100%;
+  color: rgb(221, 216, 216);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .divQuestion {
+  width: 90%;
   height: 40%;
   display: flex;
   /* padding: 50px; */
   justify-content: center;
   align-items: center;
   gap: 40px;
+  line-height: 35px;
 }
 .divQuestion > img {
-  width: 40px;
+  width: 80px;
 }
 .divAnswer {
+  width: 100%;
   display: flex;
-  height: 60%;
+  height: 40%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -182,6 +189,7 @@ button {
   cursor: pointer;
   margin: 0 60px;
   text-align: center;
+  line-height: 25px;
 }
 .divWinner {
   position: absolute;
