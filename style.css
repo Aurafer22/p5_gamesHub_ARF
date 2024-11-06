@@ -14,7 +14,9 @@
   --ARF-color003: white;
   box-sizing: border-box;
 }
-
+body {
+  background-color: var(--ARF-color001);
+}
 h1 {
   font-family: 'Nabla', system-ui;
   font-optical-sizing: auto;
@@ -23,3 +25,6 @@ h1 {
   font-variation-settings: 'EDPT' 100, 'EHLT' 12;
   font-size: 200px;
 }
+/* #app {
+  height: 100svh;
+} */

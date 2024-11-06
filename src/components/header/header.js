@@ -9,14 +9,17 @@ export default function Header(parentNode) {
   const h2 = document.createElement('h2')
   h2.textContent = 'ARF creations'
   const divButtons = document.createElement('div')
-  createNav(
-    'Tic Tac Toe',
-    './src/pages/tic_tac_toe/tic_tac_toe.html',
-    divButtons
-  )
-  createNav('Memory', './src/pages/memory/memory.html', divButtons)
-  createNav('Trivial', './src/pages/trivial/trivial.html', divButtons)
+  createNav('Tic Tac Toe', '#divTictacToe', divButtons)
+  createNav('Memory', '#divMemory', divButtons)
+  createNav('Trivial', '#divTrivial', divButtons)
   divHeader.append(h1, h2, divButtons)
   header.append(divHeader)
   parentNode.append(header)
+
+  // const ticTacToeBtn = document.querySelector('ticTacToeBtn')
+  // ticTacToeBtn.addEventListener('click', () => {
+  //   header.style.display = 'none'
+  //   const ticTacToe = document.querySelector('.tic_tac_toe')
+  //   ticTacToe.style.display = 'fixed'
+  // })
 }

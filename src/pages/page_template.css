@@ -1,0 +1,45 @@
+.divNavGame {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding: 20px 0px; */
+  position: relative;
+}
+.divLogo {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: left;
+  position: absolute;
+  left: 0px;
+}
+.divLogo > div > :first-child {
+  font-family: 'Nabla', system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: 'EDPT' 100, 'EHLT' 12;
+  font-size: 60px;
+}
+
+.divLogo > :last-child {
+  font-size: 10px;
+  color: var(--ARF-color003);
+}
+.divNavGame > :last-child {
+  width: calc(100% - 250px);
+  height: 100%;
+  position: absolute;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--ARF-color003);
+}
+.divNavGame > :last-child > p {
+  font-size: 35px;
+  text-align: center;
+}
