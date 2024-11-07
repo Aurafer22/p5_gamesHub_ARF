@@ -208,3 +208,45 @@
     line-height: 30px;
   }
 }
+@media (max-width: 667px) {
+  .divCounters {
+    gap: 5px;
+  }
+  .divCounters > p:nth-child(1) {
+    top: 20px;
+  }
+  .divCounters > p:nth-child(2) {
+    top: 55px;
+  }
+  .divCounters > p:nth-child(3) {
+    top: 90px;
+  }
+  .divCounters > p:nth-child(4) {
+    top: 125px;
+  }
+  .trivial {
+    margin: 40px 0;
+  }
+  .divTrivial {
+    gap: 15px;
+  }
+  .divQuestion > h3 {
+    font-size: 12px;
+    line-height: 15px;
+  }
+  .divQuestion > img {
+    width: 40px;
+  }
+  .divAnswer {
+    gap: 8px;
+  }
+  .divAnswer > a {
+    font-size: 10px;
+    padding: 5px;
+  }
+  .divWinner,
+  .divGameOver {
+    top: 150px;
+    left: 200px;
+  }
+}

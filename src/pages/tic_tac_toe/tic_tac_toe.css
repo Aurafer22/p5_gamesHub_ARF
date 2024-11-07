@@ -87,3 +87,17 @@
     font-size: 80px;
   }
 }
+@media (max-width: 667px) {
+  .divControlsTictac > div > p:first-child {
+    font-size: 40px;
+  }
+  .tablero {
+    width: 210px;
+    height: 210px;
+    grid-template-columns: repeat(3, 70px);
+    grid-template-rows: repeat(3, 70px);
+  }
+  .cell {
+    font-size: 50px;
+  }
+}

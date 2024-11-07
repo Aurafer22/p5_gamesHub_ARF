@@ -48,3 +48,12 @@ button {
     padding: 15px;
   }
 }
+
+@media (max-width: 667px) {
+  h1 {
+    font-size: 90px;
+  }
+  button {
+    margin-top: 20px;
+  }
+}

@@ -9,6 +9,7 @@ export default function Header(parentNode) {
   const h2 = document.createElement('h2')
   h2.textContent = 'ARF creations'
   const divButtons = document.createElement('div')
+  divButtons.classList.add('divbuttonsNav')
   createNav('Tic Tac Toe', '#divTictacToe', divButtons)
   createNav('Memory', '#divMemory', divButtons)
   createNav('Trivial', '#divTrivial', divButtons)
