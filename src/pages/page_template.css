@@ -3,7 +3,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* padding: 20px 0px; */
   position: relative;
 }
 .divLogo {
@@ -42,4 +41,25 @@
 .divNavGame > :last-child > p {
   font-size: 35px;
   text-align: center;
+}
+
+@media (max-width: 896px) {
+  .divNavGame {
+    height: auto;
+  }
+  .divLogo {
+    width: 150px;
+  }
+  .divLogo > div > :first-child {
+    font-size: 40px;
+  }
+  .divLogo > :last-child {
+    font-size: 7px;
+  }
+  .divNavGame > :last-child {
+    width: calc(100% - 150px);
+  }
+  .divNavGame > :last-child h2 {
+    font-size: 15px;
+  }
 }

@@ -25,6 +25,26 @@ h1 {
   font-variation-settings: 'EDPT' 100, 'EHLT' 12;
   font-size: 200px;
 }
-/* #app {
-  height: 100svh;
-} */
+
+button {
+  width: auto;
+  height: 60px;
+  background-color: var(--ARF-color002);
+  color: var(--ARF-color001);
+  font-family: 'Press Start 2P', system-ui;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 40px;
+  cursor: pointer;
+}
+
+@media (max-width: 896px) {
+  h1 {
+    font-size: 150px;
+  }
+  button {
+    font-size: 10px;
+    height: 40px;
+    padding: 15px;
+  }
+}

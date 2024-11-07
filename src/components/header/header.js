@@ -1,7 +1,7 @@
 import createNav from '../nav/nav'
 import './header.css'
 export default function Header(parentNode) {
-  const header = document.createElement('header')
+  const header = document.createElement('section')
   header.id = 'header'
   const divHeader = document.createElement('div')
   const h1 = document.createElement('h1')

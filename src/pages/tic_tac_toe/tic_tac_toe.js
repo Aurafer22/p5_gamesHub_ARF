@@ -2,7 +2,6 @@ import templatePage from '../page_template'
 import './tic_tac_toe.css'
 const divApp = document.querySelector('#app')
 
-// creación de elementos de la página
 export default function TicTacToe() {
   const divTictacToe = document.createElement('section')
   divTictacToe.id = 'divTictacToe'
@@ -37,20 +36,16 @@ export default function TicTacToe() {
   divTictacToe.append(gameTictactoe)
   divApp.append(divTictacToe)
 
-  // Funcionalidad del juego
   let turn = true
   let hasWinner = false
   const cells = document.querySelectorAll('.cell')
   for (let i = 0; i < cells.length; i++) {
     cells[i].addEventListener('click', newTurn)
   }
-  console.log(cells)
 
   function newTurn(e) {
     let playTurn = e.target
-    console.log(playTurn)
     let cellClicked = e.target.innerHTML
-    console.log(cellClicked)
     if (cellClicked == '' && turn) {
       playTurn.textContent = 'X'
       playTurn.classList.add('clicked')
@@ -60,7 +55,9 @@ export default function TicTacToe() {
       playTurn.classList.add('clicked')
       turn = true
     }
-    localStorage.setItem('actualPlay', cellClicked)
+    // let CellsClicked = document.querySelectorAll('.clicked')
+    // localStorage.setItem('actualPlay', JSON.stringify(CellsClicked))
+    // localStorage.setItem('turn', turn)
     const winnerCombinations = [
       [0, 1, 2],
       [3, 4, 5],
@@ -71,20 +68,19 @@ export default function TicTacToe() {
       [0, 4, 8],
       [2, 4, 6]
     ]
-    winnerCombinations.forEach((combination) => {
+    for (let combination of winnerCombinations) {
       if (checkWinner(combination[0], combination[1], combination[2])) {
         hasWinner = true
+        break
       }
-    })
-    const gameOver = Array.from(cells).every((cell) =>
+    }
+    const gameOver = Array.from(cells).every((cell) => {
       cell.classList.contains('clicked')
-    )
-    if (hasWinner && gameOver) {
+    })
+    if (!hasWinner && gameOver) {
       noWinner()
     }
   }
-
-  // Función para checkear si hay ganador
 
   function checkWinner(a, b, c) {
     if (
@@ -98,18 +94,16 @@ export default function TicTacToe() {
       cells[a].style.color = '#363636'
       cells[b].style.color = '#363636'
       cells[c].style.color = '#363636'
-      if (!hasWinner) {
-        getWinner(cells[a].innerHTML)
-        Array.from(cells).forEach((cell) => {
-          cell.style.pointerEvents = 'none'
-        })
-      }
+      getWinner(cells[a].innerHTML)
+      Array.from(cells).forEach((cell) => {
+        cell.style.pointerEvents = 'none'
+      })
     }
   }
   function getWinner(turn) {
     winner.innerHTML = turn
   }
-  function noWinner(turn) {
+  function noWinner() {
     winner.innerHTML = 'Game Over'
     winner.style.fontSize = '40px'
     winner.style.color = '#a70a0a'
@@ -120,9 +114,14 @@ export default function TicTacToe() {
   })
 
   // window.addEventListener('DOMContentLoaded', () => {
+  //   let turnSaved = localStorage.getItem('turn')
   //   let cellsSaved = JSON.parse(localStorage.getItem('actualPlay'))
-  //   console.log(cellsSaved.textContent)
-
-  //   newTurn
+  //   Array.from(cellsSaved).forEach((cellSaved) => {
+  //     if (turnSaved === true) {
+  //       cellSaved.textContent = 'X'
+  //     } else {
+  //       cellSaved.textContent = 'O'
+  //     }
+  //   })
   // })
 }

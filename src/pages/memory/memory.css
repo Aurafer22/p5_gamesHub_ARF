@@ -1,12 +1,12 @@
 #divMemory {
-  height: 100svh;
+  min-height: 100svh;
   padding: 40px 0;
   position: relative;
 }
 .memory {
   display: flex;
-  height: auto;
-  margin: auto;
+  height: 100%;
+  /* margin: auto; */
 }
 .divControlsMemory {
   width: 250px;
@@ -36,17 +36,6 @@
   width: 100%;
   text-align: center;
   color: var(--ARF-color003);
-}
-button {
-  width: auto;
-  height: 60px;
-  background-color: var(--ARF-color002);
-  color: var(--ARF-color001);
-  font-family: 'Press Start 2P', system-ui;
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 40px;
-  cursor: pointer;
 }
 
 #playGameMemo {
@@ -102,21 +91,39 @@ button {
   transform: rotateY(180deg);
 }
 
-.divWinner {
-  position: absolute;
-  width: 600px;
-  height: auto;
-  background-color: var(--ARF-color002);
-  border-radius: 10px;
-  z-index: 9999;
-  top: 300px;
-  left: 500px;
-  box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.35);
+@media (max-width: 1024px) {
+  .divFlip {
+    width: 100px;
+    height: 150px;
+  }
+  .card {
+    width: 100px;
+    height: 150px;
+  }
 }
-.divWinner > h3 {
-  color: var(--ARF-color001);
-  font-size: 40px;
-  padding: 60px 40px;
-  line-height: 50px;
-  text-align: center;
+
+@media (max-width: 896px) {
+  .divControlsMemory {
+    width: 150px;
+  }
+  .divControlsMemory > div > p:first-child {
+    font-size: 60px;
+    margin-bottom: 10px;
+  }
+  #playGameMemo {
+    width: calc(100% - 150px);
+  }
+  .divCards {
+    width: 500px;
+    height: 100%;
+    margin: 20px;
+  }
+  .divFlip {
+    width: 75px;
+    height: 125px;
+  }
+  .card {
+    width: 75px;
+    height: 125px;
+  }
 }
