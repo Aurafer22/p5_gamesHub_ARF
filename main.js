@@ -5,7 +5,6 @@ import Trivial from './src/pages/trivial/trivial'
 import './style.css'
 
 const divApp = document.querySelector('#app')
-const header = document.querySelector('#header')
 
 Header(divApp)
 TicTacToe(divApp)

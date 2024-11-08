@@ -1,6 +1,11 @@
 import templatePage from '../page_template'
-import { dataMemory } from './dataMemory'
+import initGame from './utils/initGame'
 import './memory.css'
+import blockCards from './utils/blockCards'
+import openCards from './utils/openCards'
+import checkWinner from './utils/checkWinner'
+import resetCards from './utils/resetCards'
+import resetGame from './utils/resetGame'
 
 const divApp = document.querySelector('#app')
 export default function Memory() {
@@ -14,6 +19,7 @@ export default function Memory() {
   divControls.classList.add('divControlsMemory')
   const divCounter = document.createElement('div')
   const counter = document.createElement('p')
+  counter.id = 'counter'
   counter.textContent = ''
   const points = document.createElement('p')
   points.textContent = 'POINTS'
@@ -31,24 +37,10 @@ export default function Memory() {
   divMemory.append(gameMemory)
   divApp.append(divMemory)
 
-  let cards = [...dataMemory, ...dataMemory]
-  let newGame = cards.sort(() => Math.random() - 0.5)
-  function initGame() {
-    for (const card of newGame) {
-      const divFlip = document.createElement('div')
-      divFlip.classList.add('divFlip')
-      const divCard = document.createElement('div')
-      divCard.classList.add('card')
-      divCard.setAttribute('data-id', card.id)
-      const anver = document.createElement('div')
-      const reverse = document.createElement('img')
-      reverse.src = card.image
-      divCard.append(anver, reverse)
-      divFlip.append(divCard)
-      divCards.append(divFlip)
-    }
-  }
-  initGame()
+  // let cards = [...dataMemory, ...dataMemory]
+  // let newGame = cards.sort(() => Math.random() - 0.5)
+
+  initGame(divCards)
   startButton.addEventListener('click', () => {
     resetGame()
   })
@@ -60,18 +52,18 @@ export default function Memory() {
   let cardsFlipped
   let hasWinner = false
   const allCards = document.querySelectorAll('.card')
-  function blockCards() {
-    Array.from(allCards).forEach((card) => {
-      card.style.pointerEvents = 'none'
-    })
-  }
-  function openCards() {
-    Array.from(allCards).forEach((card) => {
-      if (!card.classList.contains('flipped')) {
-        card.style.pointerEvents = 'auto'
-      }
-    })
-  }
+  // function blockCards() {
+  //   Array.from(allCards).forEach((card) => {
+  //     card.style.pointerEvents = 'none'
+  //   })
+  // }
+  // function openCards() {
+  //   Array.from(allCards).forEach((card) => {
+  //     if (!card.classList.contains('flipped')) {
+  //       card.style.pointerEvents = 'auto'
+  //     }
+  //   })
+  // }
 
   Array.from(allCards).forEach((card) =>
     card.addEventListener('click', () => {
@@ -83,7 +75,7 @@ export default function Memory() {
         firstCard = card
       } else if (counterClick === 2) {
         secondCard = card
-        blockCards()
+        blockCards(allCards)
         setTimeout(() => {
           if (
             firstCard.getAttribute('data-id') ===
@@ -96,7 +88,7 @@ export default function Memory() {
             secondCard.classList.remove('flipped')
           }
           resetCards()
-          openCards()
+          openCards(allCards)
 
           cardsFlipped = Array.from(document.querySelectorAll('.flipped')).map(
             (card) => card.getAttribute('data-id')
@@ -117,34 +109,34 @@ export default function Memory() {
     })
   )
 
-  function checkWinner() {
-    const divWinner = document.createElement('div')
-    divWinner.classList.add('divWinner')
-    const h3Winner = document.createElement('h3')
-    h3Winner.textContent = "You're a CRACK!!"
-    divWinner.append(h3Winner)
-    divMemory.append(divWinner)
-  }
+  // function checkWinner() {
+  //   const divWinner = document.createElement('div')
+  //   divWinner.classList.add('divWinner')
+  //   const h3Winner = document.createElement('h3')
+  //   h3Winner.textContent = "You're a CRACK!!"
+  //   divWinner.append(h3Winner)
+  //   divMemory.append(divWinner)
+  // }
 
-  function resetCards() {
-    firstCard = null
-    secondCard = null
-    counterClick = 0
-  }
-  function resetGame() {
-    localStorage.clear()
-    divCards.innerHTML = ''
-    location.reload()
-    initGame()
-  }
-  window.addEventListener('DOMContentLoaded', () => {
-    counterPoints = localStorage.getItem('points') || 0
-    counter.textContent = counterPoints
-    let savedCardsFlipped = JSON.parse(localStorage.getItem('cards')) || []
-    Array.from(allCards).forEach((card) => {
-      if (savedCardsFlipped.includes(card.getAttribute('data-id'))) {
-        card.classList.add('flipped')
-      }
-    })
-  })
+  // function resetCards() {
+  //   firstCard = null
+  //   secondCard = null
+  //   counterClick = 0
+  // }
+  // function resetGame() {
+  //   localStorage.clear()
+  //   divCards.innerHTML = ''
+  //   location.reload()
+  //   initGame()
+  // }
+  // window.addEventListener('DOMContentLoaded', () => {
+  //   counterPoints = localStorage.getItem('points') || 0
+  //   counter.textContent = counterPoints
+  //   let savedCardsFlipped = JSON.parse(localStorage.getItem('cards')) || []
+  //   Array.from(allCards).forEach((card) => {
+  //     if (savedCardsFlipped.includes(card.getAttribute('data-id'))) {
+  //       card.classList.add('flipped')
+  //     }
+  //   })
+  // })
 }
