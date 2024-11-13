@@ -1,5 +1,8 @@
 import templatePage from '../page_template'
 import './tic_tac_toe.css'
+import checkWinner from './utils/getWinner'
+import noWinner from './utils/noWinner'
+import newTurn from './utils/playTurn'
 const divApp = document.querySelector('#app')
 
 export default function TicTacToe() {
@@ -13,11 +16,12 @@ export default function TicTacToe() {
   divControls.classList.add('divControlsTictac')
   const divCounter = document.createElement('div')
   const winner = document.createElement('p')
+  winner.id = 'winner'
   winner.textContent = ''
   const puntos = document.createElement('p')
   puntos.textContent = 'WIN!!'
-  const startButton = document.createElement('button')
-  startButton.textContent = 'Start'
+  const startButtonTic = document.createElement('button')
+  startButtonTic.textContent = 'Start'
   const playGameTicTac = document.createElement('div')
   playGameTicTac.id = 'playGameTicTac'
   const tablero = document.createElement('div')
@@ -30,7 +34,7 @@ export default function TicTacToe() {
   }
 
   divCounter.append(winner, puntos)
-  divControls.append(divCounter, startButton)
+  divControls.append(divCounter, startButtonTic)
   playGameTicTac.append(tablero)
   gameTictactoe.append(divControls, playGameTicTac)
   divTictacToe.append(gameTictactoe)
@@ -38,11 +42,14 @@ export default function TicTacToe() {
 
   let turn = true
   let hasWinner = false
+
   const cells = document.querySelectorAll('.cell')
   for (let i = 0; i < cells.length; i++) {
     cells[i].addEventListener('click', newTurn)
   }
-
+  const gameOver = Array.from(cells).every((cell) =>
+    cell.classList.contains('clicked')
+  )
   function newTurn(e) {
     let playTurn = e.target
     let cellClicked = e.target.innerHTML
@@ -55,9 +62,7 @@ export default function TicTacToe() {
       playTurn.classList.add('clicked')
       turn = true
     }
-    // let CellsClicked = document.querySelectorAll('.clicked')
-    // localStorage.setItem('actualPlay', JSON.stringify(CellsClicked))
-    // localStorage.setItem('turn', turn)
+
     const winnerCombinations = [
       [0, 1, 2],
       [3, 4, 5],
@@ -74,54 +79,12 @@ export default function TicTacToe() {
         break
       }
     }
-    const gameOver = Array.from(cells).every((cell) => {
-      cell.classList.contains('clicked')
-    })
-    if (!hasWinner && gameOver) {
-      noWinner()
+    if (hasWinner === false && gameOver) {
+      noWinner(winner, cells)
     }
   }
 
-  function checkWinner(a, b, c) {
-    if (
-      cells[a].innerHTML.length &&
-      cells[a].innerHTML == cells[b].innerHTML &&
-      cells[b].innerHTML == cells[c].innerHTML
-    ) {
-      cells[a].style.backgroundColor = '#ffff00'
-      cells[b].style.backgroundColor = '#ffff00'
-      cells[c].style.backgroundColor = '#ffff00'
-      cells[a].style.color = '#363636'
-      cells[b].style.color = '#363636'
-      cells[c].style.color = '#363636'
-      getWinner(cells[a].innerHTML)
-      Array.from(cells).forEach((cell) => {
-        cell.style.pointerEvents = 'none'
-      })
-    }
-  }
-  function getWinner(turn) {
-    winner.innerHTML = turn
-  }
-  function noWinner() {
-    winner.innerHTML = 'Game Over'
-    winner.style.fontSize = '40px'
-    winner.style.color = '#a70a0a'
-    Array.from(cells).every((cell) => (cell.style.color = '#a70a0a'))
-  }
-  startButton.addEventListener('click', () => {
+  startButtonTic.addEventListener('click', () => {
     location.reload()
   })
-
-  // window.addEventListener('DOMContentLoaded', () => {
-  //   let turnSaved = localStorage.getItem('turn')
-  //   let cellsSaved = JSON.parse(localStorage.getItem('actualPlay'))
-  //   Array.from(cellsSaved).forEach((cellSaved) => {
-  //     if (turnSaved === true) {
-  //       cellSaved.textContent = 'X'
-  //     } else {
-  //       cellSaved.textContent = 'O'
-  //     }
-  //   })
-  // })
 }

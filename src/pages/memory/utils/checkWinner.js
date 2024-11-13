@@ -1,4 +1,4 @@
-export default function checkWinner() {
+export default function checkWinnerMemo() {
   const divWinner = document.createElement('div')
   divWinner.classList.add('divWinner')
   const h3Winner = document.createElement('h3')

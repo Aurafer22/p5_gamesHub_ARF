@@ -10,7 +10,9 @@
   border-radius: 10px;
   cursor: pointer;
 }
-
+.navBtn:hover {
+  background-color: orange;
+}
 @media (max-width: 896px) {
   .navBtn {
     font-size: 14px;

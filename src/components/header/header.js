@@ -12,7 +12,7 @@ export default function Header(parentNode) {
   divButtons.classList.add('divbuttonsNav')
   createNav('Tic Tac Toe', '#divTictacToe', divButtons)
   createNav('Memory', '#divMemory', divButtons)
-  createNav('Trivial', '#divTrivial', divButtons)
+  createNav('Trivial', '#secTrivial', divButtons)
   divHeader.append(h1, h2, divButtons)
   header.append(divHeader)
   parentNode.append(header)
