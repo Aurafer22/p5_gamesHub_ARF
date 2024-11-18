@@ -1,13 +1,14 @@
-import templatePage from '../page_template'
-import './trivial.css'
-import printQuestion from './utils/printQuestion.js'
 import { dataTrivial } from './utils/dataTrivial.js'
+import './trivial.css'
+import templatePage from '../page_template.js'
+import printQuestion from './utils/printQuestion.js'
+import resetLocalStorage from './utils/resetLocalStorage.js'
 import resetValues from './utils/resetValues.js'
-const divApp = document.querySelector('#app')
-
-export default function Trivial() {
+import getLocalStorage from './utils/getLocalStorage.js'
+const divApp = document.querySelector('#appTrivial')
+export default function Trivial(divApp) {
   const sectTrivial = document.createElement('section')
-  sectTrivial.id = 'divTrivial'
+  sectTrivial.id = 'secTrivial'
   templatePage('Trivial for kids', sectTrivial)
   const gameTrivial = document.createElement('div')
   gameTrivial.classList.add('trivial')
@@ -33,8 +34,8 @@ export default function Trivial() {
   datosSocials.textContent = 'Socials'
   const startButton = document.createElement('button')
   startButton.textContent = 'Start'
-  const playGameTriv = document.createElement('div')
-  playGameTriv.id = 'playGameTriv'
+  const playGame = document.createElement('div')
+  playGame.id = 'playGame'
   const divTrivial = document.createElement('div')
   divTrivial.classList.add('divTrivial')
   divCounters.append(
@@ -48,14 +49,15 @@ export default function Trivial() {
     divDatosSocials
   )
   divControls.append(divCounters, startButton)
-  gameTrivial.append(divControls, playGameTriv)
+  playGame.append(divTrivial)
+  gameTrivial.append(divControls, playGame)
   sectTrivial.append(gameTrivial)
   divApp.append(sectTrivial)
 
-  printQuestion()
-
-  // let questionary = []
-  // let question = null
+  let questionary = []
+  let question = questionary.shift()
+  console.log(questionary)
+  printQuestion(question, questionary)
 
   // function printQuestion(question) {
   //   divTrivial.innerHTML = ''
@@ -83,7 +85,7 @@ export default function Trivial() {
   //     divQuestion.append(iconQuestion, theQuestion)
   //     divAnswer.append(answer1, answer2, answer3)
   //     divTrivial.append(divQuestion, divAnswer)
-  //     playGameTriv.append(divTrivial)
+  //     // playGame.append(divTrivial)
 
   //     answer1.addEventListener('click', () => getAnswer(answer1, question))
   //     answer2.addEventListener('click', () => getAnswer(answer2, question))
@@ -127,7 +129,8 @@ export default function Trivial() {
   //     h3Winner.textContent = "You're a CRACK!!"
   //     divWinner.append(h3Winner)
   //     divTrivial.append(divWinner)
-  //     localStorage.clear()
+  //     localStorage.removeItem(categoria)
+  //     localStorage.removeItem('questionary')
   //   } else {
   //     const divGameOver = document.createElement('div')
   //     divGameOver.classList.add('divGameOver')
@@ -135,17 +138,21 @@ export default function Trivial() {
   //     h3GameOver.textContent = 'GAME OVER!'
   //     divGameOver.append(h3GameOver)
   //     divTrivial.append(divGameOver)
-  //     localStorage.clear()
+  //     localStorage.removeItem(categoria)
+  //     localStorage.removeItem('questionary')
   //   }
   // }
   startButton.addEventListener('click', () => {
-    localStorage.clear()
+    resetLocalStorage()
     resetValues()
     questionary = [...dataTrivial].sort(() => Math.random() - 0.5)
-    question = questionary.shift()
-    printQuestion(question)
-  })
+    console.log(questionary)
 
+    // localStorage.setItem('questionary', JSON.stringify(questionary))
+    question = questionary.shift()
+    printQuestion(question, questionary)
+  })
+  console.log(questionary)
   // function resetValues() {
   //   divTrivial.innerHTML = ''
   //   let arrayCategorias = ['Math', 'Language', 'Science', 'Socials']
@@ -156,21 +163,23 @@ export default function Trivial() {
   // }
 
   window.addEventListener('DOMContentLoaded', () => {
-    let arrayCategorias = ['Math', 'Language', 'Science', 'Socials']
-    arrayCategorias.forEach((categoria) => {
-      let newValue = JSON.parse(localStorage.getItem(categoria)) || 0
-      window[`porc${categoria}`] = newValue
-      document.getElementsByClassName(categoria)[0].style.width =
-        window[`porc${categoria}`] + '%'
-    })
-    let savedQuestionary = JSON.parse(localStorage.getItem('questionary'))
-    if (savedQuestionary && savedQuestionary.length > 0) {
-      questionary = savedQuestionary
-      console.log(questionary)
-    } else {
-      questionary = [...dataTrivial].sort(() => Math.random() - 0.5)
-    }
-    question = questionary.shift()
-    printQuestion(question)
+    getLocalStorage()
+    console.log(questionary)
+    // let arrayCategorias = ['Math', 'Language', 'Science', 'Socials']
+    // arrayCategorias.forEach((categoria) => {
+    //   let newValue = JSON.parse(localStorage.getItem(categoria)) || 0
+    //   window[`porc${categoria}`] = newValue
+    //   document.getElementsByClassName(categoria)[0].style.width =
+    //     window[`porc${categoria}`] + '%'
+    // })
+    // let savedQuestionary = JSON.parse(localStorage.getItem('questionary'))
+    // if (savedQuestionary && savedQuestionary.length > 0) {
+    //   questionary = savedQuestionary
+    //   console.log(questionary)
+    // } else {
+    //   questionary = [...dataTrivial].sort(() => Math.random() - 0.5)
+    // }
+    // question = questionary.shift()
+    // printQuestion(question)
   })
 }

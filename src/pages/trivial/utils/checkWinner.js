@@ -1,4 +1,7 @@
-export default function checkWinnerTrivial() {
+import resetLocalStorage from './resetLocalStorage'
+
+export default function checkWinner() {
+  const divTrivial = document.querySelector('.divTrivial')
   if (
     document.getElementsByClassName('Math')[0].style.width === '100%' &&
     document.getElementsByClassName('Language')[0].style.width === '100%' &&
@@ -11,7 +14,8 @@ export default function checkWinnerTrivial() {
     h3Winner.textContent = "You're a CRACK!!"
     divWinner.append(h3Winner)
     divTrivial.append(divWinner)
-    localStorage.clear()
+    localStorage.removeItem(categoria)
+    localStorage.removeItem('questionary')
   } else {
     const divGameOver = document.createElement('div')
     divGameOver.classList.add('divGameOver')
@@ -19,6 +23,6 @@ export default function checkWinnerTrivial() {
     h3GameOver.textContent = 'GAME OVER!'
     divGameOver.append(h3GameOver)
     divTrivial.append(divGameOver)
-    localStorage.clear()
+    resetLocalStorage()
   }
 }

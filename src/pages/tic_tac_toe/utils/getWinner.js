@@ -1,7 +1,7 @@
-const cells = document.querySelectorAll('.cell')
-for (let i = 0; i < cells.length; i++) {
-  cells[i].addEventListener('click', newTurn)
-}
+// const cells = document.querySelectorAll('.cell')
+// for (let i = 0; i < cells.length; i++) {
+//   cells[i].addEventListener('click', newTurn)
+// }
 export default function checkWinner(a, b, c) {
   const cells = document.querySelectorAll('.cell')
   for (let i = 0; i < cells.length; i++) {
@@ -20,6 +20,7 @@ export default function checkWinner(a, b, c) {
       Array.from(cells).forEach((cell) => {
         cell.style.pointerEvents = 'none'
       })
+      return true
     }
   }
 }

@@ -1,9 +1,7 @@
-import checkWinnerTrivial from './checkWinnerTrivial'
+import checkWinner from './checkWinner'
 
-let questionary = []
-let question = null
-
-export default function printQuestion(question) {
+export default function printQuestion(question, questionary) {
+  const divTrivial = document.querySelector('.divTrivial')
   divTrivial.innerHTML = ''
   if (question) {
     const divQuestion = document.createElement('div')
@@ -29,16 +27,23 @@ export default function printQuestion(question) {
     divQuestion.append(iconQuestion, theQuestion)
     divAnswer.append(answer1, answer2, answer3)
     divTrivial.append(divQuestion, divAnswer)
-    playGameTriv.append(divTrivial)
+    // playGame.append(divTrivial)
 
-    answer1.addEventListener('click', () => getAnswer(answer1, question))
-    answer2.addEventListener('click', () => getAnswer(answer2, question))
-    answer3.addEventListener('click', () => getAnswer(answer3, question))
+    answer1.addEventListener('click', () =>
+      getAnswer(answer1, question, questionary)
+    )
+    answer2.addEventListener('click', () =>
+      getAnswer(answer2, question, questionary)
+    )
+    answer3.addEventListener('click', () =>
+      getAnswer(answer3, question, questionary)
+    )
   } else {
-    checkWinnerTrivial()
+    checkWinner()
   }
 }
-function getAnswer(answer, question) {
+
+function getAnswer(answer, question, questionary) {
   const divAnswer = document.querySelector('.divAnswer')
   let categoria = question.tipo
   let variablePorc = `porc${categoria}`
