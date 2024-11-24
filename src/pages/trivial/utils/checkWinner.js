@@ -14,8 +14,7 @@ export default function checkWinner() {
     h3Winner.textContent = "You're a CRACK!!"
     divWinner.append(h3Winner)
     divTrivial.append(divWinner)
-    localStorage.removeItem(categoria)
-    localStorage.removeItem('questionary')
+    resetLocalStorage()
   } else {
     const divGameOver = document.createElement('div')
     divGameOver.classList.add('divGameOver')

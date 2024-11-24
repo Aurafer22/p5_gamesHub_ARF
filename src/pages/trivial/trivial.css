@@ -75,7 +75,7 @@
   background-color: #800080;
 }
 
-#playGameTriv {
+#playGame {
   display: flex;
   flex-direction: column;
   width: calc(100% - 250px);

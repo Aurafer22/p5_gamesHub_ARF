@@ -59,7 +59,10 @@ function getAnswer(answer, question, questionary) {
   divAnswer.style.pointerEvents = 'none'
   localStorage.setItem('questionary', JSON.stringify(questionary))
   question = questionary.shift()
+  console.log(question)
+
   setTimeout(() => {
-    printQuestion(question)
+    printQuestion(question, questionary)
   }, 500)
+  console.log(question)
 }
