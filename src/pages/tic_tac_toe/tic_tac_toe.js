@@ -1,4 +1,5 @@
 import templatePage from '../page_template'
+import restartGame from '../restartGame'
 import './tic_tac_toe.css'
 // import checkWinner from './utils/getWinner'
 // import noWinner from './utils/noWinner'
@@ -85,6 +86,7 @@ export default function TicTacToe() {
   // }
 
   startButtonTic.addEventListener('click', () => {
-    location.reload()
+    restartGame('TicTacToe')
+    // location.reload()
   })
 }

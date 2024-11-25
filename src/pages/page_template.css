@@ -16,6 +16,7 @@
   align-self: left;
   position: absolute;
   left: 0px;
+  cursor: pointer;
 }
 .divLogo > div > :first-child {
   font-family: 'Nabla', system-ui;
