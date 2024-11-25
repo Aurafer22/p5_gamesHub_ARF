@@ -7,7 +7,6 @@ export default function templatePage(game, parentNode) {
   const divLogo = document.createElement('div')
   divLogo.classList.add('divLogo')
   const aDivLogo = document.createElement('a')
-  // aDivLogo.href = '#header'
   aDivLogo.classList.add('divLogo')
   const logo = document.createElement('p')
   logo.textContent = 'GAME'

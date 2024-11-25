@@ -4,7 +4,6 @@ import './memory.css'
 import blockCards from './utils/blockCards'
 import openCards from './utils/openCards'
 import resetCards from './utils/resetCards'
-import resetGame from './utils/resetGame'
 import getLocalStorageMemo from './utils/getLocalStorage'
 import checkWinnerMemo from './utils/checkWinner'
 import restartGame from '../restartGame'
@@ -48,12 +47,9 @@ export default function Memory() {
   let cardsFlipped
   let hasWinner = false
   const allCards = document.querySelectorAll('.card')
+  getLocalStorageMemo(counterPoints, counter, allCards)
   startButton.addEventListener('click', () => {
     restartGame('Memory')
-    // resetCards(firstCard, secondCard, counterClick)
-    // counter.textContent = ''
-    // resetGame()
-    // initGame(divCards)
   })
   Array.from(allCards).forEach((card) =>
     card.addEventListener('click', () => {
@@ -97,9 +93,5 @@ export default function Memory() {
         localStorage.removeItem('cards')
       }
     })
-  )
-
-  window.addEventListener('DOMContentLoaded', () =>
-    getLocalStorageMemo(counterPoints, counter, allCards)
   )
 }

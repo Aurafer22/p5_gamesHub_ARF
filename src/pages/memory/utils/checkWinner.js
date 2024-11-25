@@ -5,6 +5,4 @@ export default function checkWinnerMemo() {
   h3Winner.textContent = "You're a CRACK!!"
   divWinner.append(h3Winner)
   divMemory.append(divWinner)
-  // localStorage.removeItem('points')
-  // localStorage.removeItem('cards')
 }

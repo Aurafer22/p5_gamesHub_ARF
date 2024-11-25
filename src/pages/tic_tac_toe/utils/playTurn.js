@@ -6,9 +6,6 @@ let hasWinner = false
 export default function newTurn(e) {
   const winner = document.querySelector('#winner')
   const cells = document.querySelectorAll('.cell')
-  // const gameOver = Array.from(cells).every((cell) =>
-  //   cell.classList.contains('clicked')
-  // )
   let playTurn = e.target
   let cellClicked = e.target.innerHTML
   if (cellClicked == '' && turn) {
@@ -20,9 +17,6 @@ export default function newTurn(e) {
     playTurn.classList.add('clicked')
     turn = true
   }
-  // const gameOver = Array.from(cells).every((cell) =>
-  //   cell.classList.contains('clicked')
-  // )
   const winnerCombinations = [
     [0, 1, 2],
     [3, 4, 5],

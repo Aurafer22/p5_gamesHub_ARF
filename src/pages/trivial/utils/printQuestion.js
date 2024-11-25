@@ -27,7 +27,6 @@ export default function printQuestion(question, questionary) {
     divQuestion.append(iconQuestion, theQuestion)
     divAnswer.append(answer1, answer2, answer3)
     divTrivial.append(divQuestion, divAnswer)
-    // playGame.append(divTrivial)
 
     answer1.addEventListener('click', () =>
       getAnswer(answer1, question, questionary)

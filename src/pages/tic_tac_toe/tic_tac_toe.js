@@ -1,8 +1,6 @@
 import templatePage from '../page_template'
 import restartGame from '../restartGame'
 import './tic_tac_toe.css'
-// import checkWinner from './utils/getWinner'
-// import noWinner from './utils/noWinner'
 import newTurn from './utils/playTurn'
 const divApp = document.querySelector('#app')
 
@@ -41,52 +39,12 @@ export default function TicTacToe() {
   divTictacToe.append(gameTictactoe)
   divApp.append(divTictacToe)
 
-  // let turn = true
-  // let hasWinner = false
-
   const cells = document.querySelectorAll('.cell')
   for (let i = 0; i < cells.length; i++) {
     cells[i].addEventListener('click', newTurn)
   }
-  // const gameOver = Array.from(cells).every((cell) =>
-  //   cell.classList.contains('clicked')
-  // )
-  // function newTurn(e) {
-  //   let playTurn = e.target
-  //   let cellClicked = e.target.innerHTML
-  //   if (cellClicked == '' && turn) {
-  //     playTurn.textContent = 'X'
-  //     playTurn.classList.add('clicked')
-  //     turn = false
-  //   } else if (cellClicked == '' && !turn) {
-  //     playTurn.textContent = 'O'
-  //     playTurn.classList.add('clicked')
-  //     turn = true
-  //   }
-
-  //   const winnerCombinations = [
-  //     [0, 1, 2],
-  //     [3, 4, 5],
-  //     [6, 7, 8],
-  //     [0, 3, 6],
-  //     [1, 4, 7],
-  //     [2, 5, 8],
-  //     [0, 4, 8],
-  //     [2, 4, 6]
-  //   ]
-  //   for (let combination of winnerCombinations) {
-  //     if (checkWinner(combination[0], combination[1], combination[2])) {
-  //       hasWinner = true
-  //       break
-  //     }
-  //   }
-  //   if (hasWinner === false && gameOver) {
-  //     noWinner(winner, cells)
-  //   }
-  // }
 
   startButtonTic.addEventListener('click', () => {
     restartGame('TicTacToe')
-    // location.reload()
   })
 }

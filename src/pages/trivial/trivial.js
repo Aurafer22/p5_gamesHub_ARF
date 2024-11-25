@@ -57,18 +57,9 @@ export default function Trivial(divApp) {
 
   let questionary = [...dataTrivial].sort(() => Math.random() - 0.5)
   let question = questionary.shift()
-  printQuestion(question, questionary)
+  getLocalStorage(questionary, question)
 
   startButton.addEventListener('click', () => {
     restartGame('Trivial')
-    // resetLocalStorage()
-    // resetValues()
-    // questionary = [...dataTrivial].sort(() => Math.random() - 0.5)
-    // question = questionary.shift()
-    // printQuestion(question, questionary)
-  })
-
-  window.addEventListener('DOMContentLoaded', () => {
-    getLocalStorage(questionary, question)
   })
 }
